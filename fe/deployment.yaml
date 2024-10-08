@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: fe
-        image: fe:latest
+        image: nguyendumbo/fe:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
