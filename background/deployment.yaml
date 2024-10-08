@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-background-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: be-background-deployment
+  template:
+    metadata:
+      labels:
+        app: be-background-deployment
+    spec:
+      containers:
+      - name: be-background
+        image: nguyendumbo/be-background:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
