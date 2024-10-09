@@ -22,4 +22,4 @@ spec:
             value: "HauTestTimer"
         #imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8
+        - containerPort: 80
