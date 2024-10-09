@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: be-timer-cronjob
+spec:
+  schedule: "* * * * *"  # Runs every minute
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: be-timer-cronjob
+            image: nguyendumbo/be-timer:latest
+            env:
+              - name: MongoAuditConnectionString
+                value: "mongodb://joblogicdevgeneralcosmos:jFhhjjcDA2caHMu08b4SIXHoOR1VWfjBlPDDylQwYdsNf5EtarJQZysfbVzMwv8wrea8Ml8OZ31jzdb8yXesvA==@joblogicdevgeneralcosmos.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@joblogicdevgeneralcosmos@"
+              - name: MongoDBUserSessionDatabaseName
+                value: "HauTestTimer"
+          restartPolicy: OnFailure
