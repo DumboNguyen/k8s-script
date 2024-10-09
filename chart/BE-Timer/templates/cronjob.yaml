@@ -9,7 +9,7 @@ spec:
       template:
         spec:
           containers:
-          - name: {{ .Values.image.name }}
+          - name: {{ .Chart.Name }}
             image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
             env:
               - name: MongoAuditConnectionString
