@@ -15,6 +15,11 @@ spec:
       containers:
       - name: be-background
         image: nguyendumbo/be-background:latest
+        env:
+          - name: MongoAuditConnectionString
+            value: "mongodb://joblogicdevgeneralcosmos:jFhhjjcDA2caHMu08b4SIXHoOR1VWfjBlPDDylQwYdsNf5EtarJQZysfbVzMwv8wrea8Ml8OZ31jzdb8yXesvA==@joblogicdevgeneralcosmos.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@joblogicdevgeneralcosmos@"
+          - name: MongoDBUserSessionDatabaseName
+            value: "HauTestTimer"
         #imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8
