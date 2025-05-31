@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fe-service
+  name: fe
 spec:
   type: NodePort
   ports:
@@ -49,6 +49,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: fe-service
+            name: fe
             port:
               number: 80
