@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fe-deployment
+  name: fe
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: fe-deployment
+      app: fe
   template:
     metadata:
       labels:
-        app: fe-deployment
+        app: fe
     spec:
       containers:
       - name: fe
@@ -30,4 +30,25 @@ spec:
       targetPort: 80
       #nodePort: 32000
   selector:
-    app: fe-deployment
+    app: fe
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 194.233.90.242.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fe-service
+            port:
+              number: 80
